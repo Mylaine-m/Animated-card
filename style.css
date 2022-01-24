@@ -1,0 +1,119 @@
+body {
+	background-color: #041c32;
+	display: grid;
+	font-family: sans-serif;
+	min-height: 100vh;
+	place-items: center;
+	line-height: 1.6;
+}
+
+.card {
+	color: hsl(0, 0%, 100%);
+	background-image: url(img/pexels-daria-shevtsova-1619488.jpg);
+	background-size: cover;
+	padding: 10rem 0 0;
+	max-width: 35ch;
+	border-radius: 0.75rem;
+	overflow: hidden;
+
+	transition: transform 400ms ease;
+}
+
+.card:hover,
+.card:focus-within {
+	transform: scale(1.05);
+}
+
+.card-content {
+	--padding: 1.5rem;
+	padding: var(--padding);
+	background: linear-gradient(hsl(199 87.1% 12.2% / 0), hsl(199 88.6% 20.6% / 0.35) 15%, hsl(0 0% 0% / 1));
+}
+
+.card-title {
+	position: relative;
+	width: max-content;
+	max-width: 100%;
+}
+
+/* Line */
+.card-title::after {
+	content: "";
+	position: absolute;
+	height: 3px;
+	left: calc(var(--padding) * -1);
+	bottom: 0;
+	width: calc(100% + var(--padding));
+	background: hsl(35, 78%, 66.1%);
+	transform-origin: left;
+
+	transition: transform 400ms ease;
+}
+
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
+	transform: scaleX(1);
+}
+
+@media (hover) {
+    .card-content {
+        transform: translateY(60%);
+        transition: transform 400ms ease;
+    }
+    .card:hover .card-content,
+    .card:focus-within .card-content {
+        transform: translateY(0);
+        transition-delay: 400ms;
+    }
+    
+    .card:focus-within .card-content {
+        transition-duration: 0ms;
+    }
+    
+    .card-content > *:not(.card-title) {
+        opacity: 0;
+        transition: opacity 500ms linear;
+    }
+    
+    .card:hover .card-content > *:not(.card-title),
+    .card:focus-within .card-content > *:not(.card-title) {
+        opacity: 1;
+        transition-delay: 500ms;
+    }
+
+    .card-title::after {
+        transform: scaleX(0);
+    }
+}
+/* button learn more */
+
+.button {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 0.5rem;
+	color: hsl(0 0% 0%);
+	background-color: hsl(35, 78%, 66.1%);
+	padding: 0.25em 0.75em;
+}
+
+.button:hover,
+.button:focus {
+	background-color: hsl(0, 0%, 100%);
+	color: hsl(35, 78%, 66.1%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms
+        !important;
+        animation-iteration-count: 1
+        !important;
+        transition-duration: 0.01ms
+        !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0ms !important;
+    }
+}
